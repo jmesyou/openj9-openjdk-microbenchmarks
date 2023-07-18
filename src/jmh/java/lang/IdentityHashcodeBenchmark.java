@@ -1,5 +1,7 @@
-package microbenchmarks.instrinsics;
+package lang;
 
+import java.lang.Integer;
+import java.lang.Object;
 import java.util.Random;
 
 import org.openjdk.jmh.annotations.*;

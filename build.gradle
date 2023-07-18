@@ -8,8 +8,8 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.17
+targetCompatibility = 1.17
 
 dependencies {
     jmh 'org.openjdk.jmh:jmh-core:0.9'
