@@ -15,3 +15,29 @@ dependencies {
     jmh 'org.openjdk.jmh:jmh-core:0.9'
     jmh 'org.openjdk.jmh:jmh-generator-annprocess:0.9'
 }
+
+jmh {
+   iterations = 10 // Number of measurement iterations to do.
+   benchmarkMode = ['thrpt'] // Benchmark mode. Available modes are: [Throughput/thrpt, AverageTime/avgt, SampleTime/sample, SingleShotTime/ss, All/all]
+   fork = 1 // How many times to forks a single benchmark. Use 0 to disable forking altogether
+   failOnError = false // Should JMH fail immediately if any benchmark had experienced the unrecoverable error?
+   forceGC = false // Should JMH force GC between iterations?
+   humanOutputFile = project.file("${project.buildDir}/reports/jmh/output.txt") // human-readable output file
+   resultsFile = project.file("${project.buildDir}/reports/jmh/results.csv") // results file
+   benchmarkParameters =  [:] // Benchmark parameters.
+   profilers = [] // Use profilers to collect additional data. Supported profilers: [cl, comp, gc, stack, perf, perfnorm, perfasm, xperf, xperfasm, hs_cl, hs_comp, hs_gc, hs_rt, hs_thr, async]
+   resultFormat = 'CSV' // Result format type (one of CSV, JSON, NONE, SCSV, TEXT)
+   threads = 1 // Number of worker threads to run with.
+   jmhTimeout = '1s' // Timeout for benchmark iteration.
+   timeUnit = 'ms' // Output time unit. Available time units are: [m, s, ms, us, ns].
+   verbosity = 'NORMAL' // Verbosity mode. Available modes are: [SILENT, NORMAL, EXTRA]
+   warmup = '1s' // Time to spend at each warmup iteration.
+   warmupForks = 0 // How many warmup forks to make for a single benchmark. 0 to disable warmup forks.
+   warmupIterations = 5 // Number of warmup iterations to do.
+   warmupMode = 'INDI' // Warmup mode for warming up selected benchmarks. Warmup modes are: [INDI, BULK, BULK_INDI].
+   warmupBenchmarks = ['.*Warmup'] // Warmup benchmarks to include in the run in addition to already selected. JMH will not measure these benchmarks, but only use them for the warmup.
+
+   zip64 = true // Use ZIP64 format for bigger archives
+   jmhVersion = '1.36' // Specifies JMH version
+   includeTests = true // Allows to include test sources into generate JMH jar, i.e. use it when benchmarks depend on the test classes.
+}

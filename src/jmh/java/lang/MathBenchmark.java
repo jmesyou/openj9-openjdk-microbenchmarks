@@ -12,10 +12,9 @@ import org.openjdk.jmh.infra.Blackhole;
 
 public class MathBenchmark {
 
-    Random random = new Random();
-
     @State(Scope.Thread)
-    public class LongPair {
+    public static class LongPair {
+        Random random = new Random();
         long lhs;
         long rhs;
 
@@ -27,7 +26,8 @@ public class MathBenchmark {
     }
 
     @State(Scope.Thread)
-    public class IntPair {
+    public static class IntPair {
+        Random random = new Random();
         int lhs;
         int rhs;
 
@@ -50,61 +50,85 @@ public class MathBenchmark {
 
     @Benchmark
     public void benchmarkIntAddExact(Blackhole blackhole, IntPair arguments) {
-        blackhole.consume(Math.addExact(arguments.lhs, arguments.rhs));
+        try {
+            blackhole.consume(Math.addExact(arguments.lhs, arguments.rhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkLongAddExact(Blackhole blackhole, LongPair arguments) {
-        blackhole.consume(Math.addExact(arguments.lhs, arguments.rhs));
+        try {
+            blackhole.consume(Math.addExact(arguments.lhs, arguments.rhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkIntSubtractExact(Blackhole blackhole, IntPair arguments) {
-        blackhole.consume(Math.subtractExact(arguments.lhs, arguments.rhs));
+        try {
+            blackhole.consume(Math.subtractExact(arguments.lhs, arguments.rhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkLongSubtractExact(Blackhole blackhole, LongPair arguments) {
-        blackhole.consume(Math.subtractExact(arguments.lhs, arguments.rhs));
+        try {
+            blackhole.consume(Math.subtractExact(arguments.lhs, arguments.rhs));
+        } catch (ArithmeticException ex) {}
     }
     @Benchmark
     public void benchmarkIntMultiplyExact(Blackhole blackhole, IntPair arguments) {
-        blackhole.consume(Math.multiplyExact(arguments.lhs, arguments.rhs));
+        try {
+            blackhole.consume(Math.multiplyExact(arguments.lhs, arguments.rhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkLongMultiplyExact(Blackhole blackhole, LongPair arguments) {
-        blackhole.consume(Math.multiplyExact(arguments.lhs, arguments.rhs));
+        try {
+            blackhole.consume(Math.multiplyExact(arguments.lhs, arguments.rhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkIntAbsExact(Blackhole blackhole, IntPair arguments) {
-        blackhole.consume(Math.absExact(arguments.lhs));
+        try {
+            blackhole.consume(Math.absExact(arguments.lhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkLongAbsExact(Blackhole blackhole, LongPair arguments) {
-        blackhole.consume(Math.absExact(arguments.lhs));
+        try {
+            blackhole.consume(Math.absExact(arguments.lhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkIntIncrementExact(Blackhole blackhole, IntPair arguments) {
-        blackhole.consume(Math.incrementExact(arguments.lhs));
+        try {
+            blackhole.consume(Math.incrementExact(arguments.lhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkLongIncrementExact(Blackhole blackhole, LongPair arguments) {
-        blackhole.consume(Math.incrementExact(arguments.lhs));
+        try {
+            blackhole.consume(Math.incrementExact(arguments.lhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkIntDecrementExact(Blackhole blackhole, IntPair arguments) {
-        blackhole.consume(Math.decrementExact(arguments.lhs));
+        try {
+            blackhole.consume(Math.decrementExact(arguments.lhs));
+        } catch (ArithmeticException ex) {}
     }
 
     @Benchmark
     public void benchmarkLongDecrementExact(Blackhole blackhole, LongPair arguments) {
-        blackhole.consume(Math.decrementExact(arguments.lhs));
+        try {
+            blackhole.consume(Math.decrementExact(arguments.lhs));
+        } catch (ArithmeticException ex) {}
     }
 
 }
