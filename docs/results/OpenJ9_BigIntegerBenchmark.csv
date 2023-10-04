@@ -1,0 +1,2 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
+"lang.math.BigIntegerBenchmark.benchmarkSquare","thrpt",1,10,657.420823,18.199967,"ops/ms"
