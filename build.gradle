@@ -17,7 +17,7 @@ dependencies {
 }
 
 jmh {
-  includes =['BigIntegerBenchmark.*']
+  includes =['AutoBoxingBenchmark.manualUnbox']
   iterations = 10 // Number of measurement iterations to do.
   benchmarkMode = ['thrpt'] // Benchmark mode. Available modes are: [Throughput/thrpt, AverageTime/avgt, SampleTime/sample, SingleShotTime/ss, All/all]
   fork = 1 // How many times to forks a single benchmark. Use 0 to disable forking altogether
